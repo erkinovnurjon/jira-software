@@ -1,8 +1,8 @@
 <template>
     
-      <section>
-            <h1>Layout</h1>
-            <LayoutsMainNavbar />
+      <LayoutsMainNavbar />
+       <section class="min-h-screen bg-white dark:bg-black">
+            
             <slot /> 
       </section>
 </template>
