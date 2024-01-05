@@ -40,8 +40,14 @@ useHead({title : 'Jira Software'})
                   class="py-4 mt-12 rounded-r-full flex flex-col space-y-2
                   bg-gradient-to-r from-white dark:from-black to-blue-500 dark:to-blue-800">
                  <Icon name="bxs:quote-alt-left" class="text-7xl" />
+                 <p class="text-lg pl-2">{{ item.credentials.text }}</p>
+                 <div class="opacity-70 pl-2">
+                  <p class="font-bold">{{ item.credentials.username }}</p>
+                  <p class="text-sm">{{ item.credentials.company }}</p>
+                 </div>
                 </div>
                 </div>
+                <NuxtImg :src="item.image" class="w-[60%]" />
               </div>
             </template>
           </UTabs>
