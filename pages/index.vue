@@ -17,12 +17,12 @@ const { currentUser } = useAuthStore()
 				<h1 class="text-5xl">
 					Move fast, stay aligned, and build better - together
 				</h1>
-				<p class="text-lg opacity-80">
+				<p class="text-xl py-5 opacity-80">
 					The #1 software development tool used by agile teams
 				</p>
 				<template v-if="currentUser.status">
 					<NuxtLink to="/documents">
-						<UButton color="blue">Documents</UButton>
+						<UButton color="blue" class="h-10 my-4">Documents</UButton>
 					</NuxtLink>
 				</template>
 				<template v-else>
@@ -31,8 +31,10 @@ const { currentUser } = useAuthStore()
 					</NuxtLink>
 				</template>
 			</div>
+                  <div>
 
-			<NuxtImg src="/hero.webp" class="w-full" />
+				<NuxtImg src="/hero.webp" class="w-full" />
+			</div>
 		</section>
 
 		<!-- Tab section -->
