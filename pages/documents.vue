@@ -2,8 +2,8 @@
 import { ACCOUNT } from '~/libs/appwrite';
 import { useLoadingStore } from '~/store/loading.store';
 
-definePageMeta({layout : 'documents'})
-useHead({ title: 'Documents | Jira software'})
+definePageMeta({ layout: 'documents' })
+useHead({ title: 'Documents | Jira software' })
 
 const router = useRouter()
 const loadingStore = useLoadingStore()
