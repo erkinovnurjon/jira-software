@@ -8,7 +8,7 @@ import type { IColumn, IDeal } from '~/types';
 
 export const useStatusQuery = () => {
       const {currentUser} = useAuthStore()
-      console.log(currentUser.id);
+      
       return useQuery({
             queryKey : ['deals'],
             queryFn : () => 
