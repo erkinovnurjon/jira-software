@@ -2,6 +2,7 @@ import { EnumStatus } from "~/types"
 
 export const DB_ID = 'jira-db'
 export const COLLECTION_DEALS = 'deals'
+export const COLLECTION_COMMENTS = 'comments'
 
 export const tabs = [
 	{
