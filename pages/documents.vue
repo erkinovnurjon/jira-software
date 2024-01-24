@@ -1,4 +1,6 @@
 <script setup lang="ts">
+
+import  { status } from '~/constants';
 import { ACCOUNT } from '~/libs/appwrite'
 import { useAuthStore } from '~/store/auth.store'
 import { useLoadingStore } from '~/store/loading.store'
@@ -26,7 +28,13 @@ onMounted(() => {
 </script>
 
 <template>
-	<div>
-		<UButton>To DO</UButton>
+	<div class="grid grid-cols-4 gap-2 mt-12">
+		<UButton class="w-full h-12" color="blue" variant="outline"
+		v-for="(item,index) in status" :key="index">
+			<div class="flex items-center space-x-2">
+				<span class="font-bold">{{ item.name }}</span>
+				<span class="text-sm text-neutral-500">2</span>
+			</div>
+		</UButton>
 	</div>
 </template>
