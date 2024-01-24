@@ -1,10 +1,43 @@
 <script setup lang="ts">
+import { useMutation } from '@tanstack/vue-query';
+import { COLLECTION_DEALS, DB_ID } from '~/constants';
+import { DATABASE } from '~/libs/appwrite';
 import { useStatusQuery } from '~/query/use-status-query'
+import type { IColumn, IDeal } from '~/types';
 
 definePageMeta({ layout: 'documents' })
 useHead({ title: 'Documents | Jira software' })
 
 const { data, isLoading, refetch } = useStatusQuery()
+
+const dragCarfRef = ref<IDeal | null>(null)
+const sourceColumnRef = ref<IColumn | null>(null)
+const isMoving = ref(false)
+
+const {mutate , isPending} = useMutation({
+	mutationKey : ['moveCard'],
+	mutationFn: ( {docId , status} : {docId : string , status :string}) => 
+	DATABASE.updateDocument(DB_ID , COLLECTION_DEALS , docId , {status}),
+	onSuccess : () => refetch()
+})
+
+const handleDragStart = (card :IDeal , column :IColumn) => {
+	isMoving.value = true
+	dragCarfRef.value = card
+	sourceColumnRef.value = column
+}
+
+const handleDragOver = (event : DragEvent) => {
+	event.preventDefault()
+}
+
+const handleDrop = (column : IColumn) => {
+	isMoving.value = false
+	if(dragCarfRef.value && sourceColumnRef.value){
+		mutate({docId : dragCarfRef.value.$id , status:column.id})
+	}
+}
+
 </script>
 
 <template>
@@ -21,7 +54,9 @@ const { data, isLoading, refetch } = useStatusQuery()
 	</div>
 
 	<div class="grid grid-cols-4 gap-2 mt-12" v-else>
-		<div v-for="column in data" :key="column.id">
+		<div v-for="column in data" :key="column.id"
+		 @dragover="handleDragOver"
+		  @drop="() =>handleDrop(column)">
 			<UButton class="w-full h-12" color="blue" variant="outline">
 				<div class="flex items-center space-x-2">
 					<span class="font-bold">{{ column.name }}</span>
@@ -39,6 +74,7 @@ const { data, isLoading, refetch } = useStatusQuery()
 				:key="card.$id"
 				role="button"
 				draggable="true"
+				@dragstart="() => handleDragStart(card , column)"
 			>
 				<div class="flex items-center space-x-2">
 					<span class="font-bold text-lg uppercase">{{ card.name }}</span>
