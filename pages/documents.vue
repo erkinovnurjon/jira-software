@@ -56,7 +56,9 @@ const handleDrop = (column : IColumn) => {
 	<div class="grid grid-cols-4 gap-2 mt-12" v-else>
 		<div v-for="column in data" :key="column.id"
 		 @dragover="handleDragOver"
-		  @drop="() =>handleDrop(column)">
+		  @drop="() =>handleDrop(column)"
+		  class="px-1"
+		  :class="isMoving && 'border-l-2 border-r-2 border-dotted h-screen dark:border-gray-900 border-gray-200'">
 			<UButton class="w-full h-12" color="blue" variant="outline">
 				<div class="flex items-center space-x-2">
 					<span class="font-bold">{{ column.name }}</span>
@@ -75,6 +77,7 @@ const handleDrop = (column : IColumn) => {
 				role="button"
 				draggable="true"
 				@dragstart="() => handleDragStart(card , column)"
+				:class="isPending && 'opacity-50 cursor-not-allowed'"
 			>
 				<div class="flex items-center space-x-2">
 					<span class="font-bold text-lg uppercase">{{ card.name }}</span>
