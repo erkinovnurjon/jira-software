@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/vue-query';
-import { useAuthStore } from './../store/auth.store';
+import { useAuthStore } from '../store/auth.store';
 import { DATABASE } from '~/libs/appwrite';
-import { COLLECTION_DEALS, DB_ID, status } from '~/constants';
+import { COLLECTION_DEALS, DB_ID, status } from '~/constants'
 import { Query } from 'appwrite';
 import type { IColumn, IDeal } from '~/types';
 
 
-export const useStatusQuery = () => {
+export const useStatus = () => {
       const {currentUser} = useAuthStore()
       
       return useQuery({
