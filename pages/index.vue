@@ -2,7 +2,10 @@
 import { tabs, templates } from '@/constants'
 import { useAuthStore } from '~/store/auth.store'
 
+
+
 useHead({ title: 'Jira software' })
+
 
 const { currentUser } = useAuthStore()
 </script>
@@ -102,7 +105,7 @@ const { currentUser } = useAuthStore()
 					<div v-for="(item, index) in templates" :key="index">
 						<div class="flex flex-col mt-4">
 							<div
-								class="bg-gray-500 dark:bg-gray-800 flex items-center gap-5 h-20"
+								class="bg-gray-100 dark:bg-gray-800 flex items-center gap-5 h-20"
 							>
 								<div
 									class="flex justify-center items-center bg-blue-500/30 dark:bg-blue-800/30 p-3 h-full"
@@ -127,7 +130,7 @@ const { currentUser } = useAuthStore()
 					</div>
 
 					<div
-						class="py-4 mt-12 rounded-r-full flex flex-col space-y-2 bg-gradient-to-l from-gray-500 dark:from-gray-800 to-blue-500 dark:to-blue-800"
+						class="py-4 mt-12 rounded-r-full flex flex-col space-y-2 bg-gradient-to-l from-gray-200 dark:from-gray-800 to-blue-400 dark:to-blue-800"
 					>
 						<Icon name="bxs:quote-alt-left" class="text-7xl" />
 						<p class="text-lg pl-2">
@@ -140,7 +143,7 @@ const { currentUser } = useAuthStore()
 						</div>
 					</div>
 				</div>
-				<div class="bg-gray-500 dark:bg-gray-800 p-8">
+				<div class="bg-gray-300 dark:bg-gray-800 p-8">
 					<div class="flex flex-col space-y-6 items-center">
 						<div class="text-center">
 							<h1 class="text-2xl font-medium">Then customize as you grow</h1>
