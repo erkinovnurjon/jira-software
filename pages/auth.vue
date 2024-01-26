@@ -27,8 +27,8 @@ const toggleLogin = () => (isLogin.value = !isLogin.value)
 			src="/bg-auth.jpg"
 			class="absolute inset-0 w-full h-full object-cover z-10"
 		/>
-		<div
-			class="absolute inset-0 w-full h-full z-20 dark:bg-black/40 bg-white/40"
+		<div  
+	      class="absolute inset-0 w-full h-full z-20 dark:bg-black/40 bg-white/40"
 		></div>
 		<UCard class="z-50 w-1/2 relative" :ui="{ body: { base: 'flex gap-4' } }">
 			<div class="space-y-4 flex-1">

@@ -86,7 +86,10 @@ const handleDrop = (column: IColumn) => {
 				@dragstart="() => handleDragStart(deal, column)"
 				:class="isPending && 'opacity-50 cursor-not-allowed'"
 			>
-				<div class="flex items-center space-x-2">
+			         <div
+					class="flex items-center space-x-2"
+					role="button"
+				>
 					<span class="font-bold text-lg uppercase">{{ deal.name }}</span>
 				</div>
 
@@ -130,4 +133,4 @@ const handleDrop = (column: IColumn) => {
 .animation {
 	animation: show 0.3s ease-in-out;
 }
-</style>~/query/use-status
+</style>

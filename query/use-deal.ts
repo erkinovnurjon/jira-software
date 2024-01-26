@@ -3,8 +3,10 @@ import { useAuthStore } from './../store/auth.store';
 import { DATABASE } from '~/libs/appwrite';
 import { COLLECTION_DEALS, DB_ID } from '~/constants';
 import { Query } from 'appwrite';
-import type { IDeal } from '~/types';
-export const useDeals = (status : string) => {
+import type { EnumStatus, IDeal } from '~/types';
+
+
+export const useDeals = (status : EnumStatus) => {
       const { currentUser} = useAuthStore()
 
       return useQuery({
@@ -18,7 +20,7 @@ export const useDeals = (status : string) => {
 
                   return deals.map(deal => ({
                         $createdAt : deal.$createdAt,
-                        id: deal.$id,
+                        $id: deal.$id,
                         name:deal.name , 
                         description : deal.description,
                         status : deal.status
