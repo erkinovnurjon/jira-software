@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useDeals } from '~/query/use-deal';
 import { useDelete } from '~/query/use-delete';
+import { useEditDealStore } from '~/store/edit-deal.store';
 import { EnumStatus } from '~/types';
 
 definePageMeta({ layout: 'documents' })
@@ -8,6 +9,7 @@ useHead({ title: 'To do | Jira software' })
 
 const { data, isLoading, refetch } = useDeals(EnumStatus.todo)
 const { set } = useCurrentDealStore()
+const editDeal = useEditDealStore()
 const { isDeleting , deleteDeal} = useDelete(refetch)
 
 const handleDelete = (id : string) => {
@@ -59,13 +61,14 @@ const handleDelete = (id : string) => {
 				</div>
 
                         <div class="grid grid-cols-2 gap-2">
-                              <UButton block color="blue">Edit</UButton>
+                              <UButton block color="blue" @click="editDeal.set(item)">Edit</UButton>
                               <UButton block color="red" @click="() => handleDelete(item.$id)"
                                     :disabled="isDeleting">Delete</UButton>
                         </div>
                    </div>
 
                    <Slideover />
+                   <SharedEditDeal :refetch="refetch" />
                </div>
             </div>
       </div>
