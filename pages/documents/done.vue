@@ -56,7 +56,7 @@ const handleDelete = (id : string) => {
 
                   <UDivider class="my-3" />
 
-				<div class="opacity-55 text-sm line-clamp-1">
+				<div class="opacity-55 my-3 text-sm line-clamp-1">
 					{{ item.description }}
 				</div>
 
