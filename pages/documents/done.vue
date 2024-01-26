@@ -71,6 +71,11 @@ const handleDelete = (id : string) => {
                    <SharedEditDeal :refetch="refetch" />
                </div>
             </div>
+            <div v-else>
+                  <div class="flex flex-col items-center justify-self-center">
+                      <NuxtImg src="/no-data.svg" width="300" height="300" />
+                  </div>
+            </div>
       </div>
 </template>
 
